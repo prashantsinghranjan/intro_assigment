@@ -20,6 +20,8 @@ const mongoURI = 'mongodb://0.0.0.0:27017/transaction';
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB Connected'))
  .catch(err => console.log(err));
+
+ //Here we are calling for all the requied data
 app.get("/",async(req,res)=>{
   let currentTime=new Date()
   try{
@@ -31,60 +33,132 @@ app.get("/",async(req,res)=>{
    
    
 })
-
+//we can save the data for test
 app.post("/save",(req,res)=>{
-  //let registration=req.body
-  let data1=[
+  //data is the collection of data on which we can test transactio
+  let data= [
     {
-        name:"customer1",
-        Items:["item1","item3"],
-        Total_price:140,
-        Date:moment().format("MMM Do YY"),
-        Reward:0
-    
-     },
-     {
-        name:"customer2",
-        Items:["item4"],
-        Total_price:80,
-          Date:moment().format("MMM Do YY"),
-        Reward:0
-    
-     },
-     {
-        name:"customer3",
-        Items:["item3","item5"],
-        Total_price:180,
-       Date:moment().format("MMM Do YY"),
-        Reward:0
-    
-     },
-     {
-        name:"customer2",
-        Items:["item1","item2"],
-        Total_price:70,
-         Date:moment().format("MMM Do YY"),
-        Reward:0
-    
-     },
-     {
-        name:"customer5",
-        Items:["item2","item4"],
-        Total_price:130,
-         Date:moment().format("MMM Do YY"),
-        Reward:0
-    
-     }
-
- ]
- let data=[{
-  name:"customer1",
-  Items:["item1","item3"],
-  Total_price:140,
-  Date:new Date(),
-  Reward:0
-
-}]
+        name: "customer1",
+        Items: [
+            "item1",
+            "item3"
+        ],
+        Total_price: 140,
+        Date:new Date("2024-06-04T09:42:45.340Z") ,
+        Reward: 130
+    },
+    {
+        name: "customer1",
+        Items: [
+            "item1",
+            "item3"
+        ],
+        Total_price: 140,
+        Reward: 130,
+        Date: new Date("2024-06-04T09:42:45.340Z")
+    },
+    {
+        name: "customer2",
+        Items: [
+            "item4"
+        ],
+        Total_price: 80,
+        Reward: 50,
+        Date: new Date("2024-04-14T09:42:45.340Z")
+    },
+    {
+        name: "customer3",
+        Items: [
+            "item3",
+            "item5"
+        ],
+        Total_price: 180,
+        Reward: 210,
+        Date: new Date("2024-06-16T09:42:45.340Z")
+    },
+    {
+        name: "customer2",
+        Items: [
+            "item1",
+            "item2"
+        ],
+        Total_price: 70,
+        Reward: 50,
+        Date: new Date("2024-07-04T09:42:45.340Z") 
+    },
+    {
+        name: "customer1",
+        Items: [
+            "item1",
+            "item3"
+        ],
+        Total_price: 140,
+        Reward: 130,
+        Date:new Date("2024-07-04T09:42:45.340Z") 
+    },
+    {
+        name: "customer3",
+        Items: [
+            "item3",
+            "item5"
+        ],
+        Total_price: 180,
+        Reward: 210,
+        Date: new Date("2024-07-04T09:42:45.340Z")
+    },
+    {
+        
+        name: "customer2",
+        Items: [
+            "item1",
+            "item2"
+        ],
+        Total_price: 70,
+        Reward: 50,
+        Date:new Date("2024-06-10T09:42:45.340Z") 
+    },
+    {
+        name: "customer1",
+        Items: [
+            "item1",
+            "item3"
+        ],
+        Total_price: 140,
+        Date: new Date("2024-06-04T09:42:45.340Z"),
+        Reward: 130
+       
+    },
+    {
+        name: "customer3",
+        Items: [
+            "item3",
+            "item5"
+        ],
+        Total_price: 180,
+        Date:new Date("2024-05-12T09:42:45.340Z"),
+        Reward: 210
+    },
+    {
+        name: "customer2",
+        Items: [
+            "item1",
+            "item2"
+        ],
+        Total_price: 70,
+        Date: new Date("2024-06-11T09:42:45.340Z"),
+        Reward: 50
+    },
+    {
+        name: "customer1",
+        Items: [
+            "item1",
+            "item3"
+        ],
+        Total_price: 140,
+        Date:new Date("2024-07-11T09:42:45.340Z"),
+        Reward: 130
+    }
+  ]
  data.forEach((element)=>{
   if(element.Total_price>100){
     element.Reward=2*(element.Total_price-100)+1*50
@@ -93,20 +167,13 @@ app.post("/save",(req,res)=>{
   }
   
  })
- let date=moment().format("MMM Do YY");
- console.log(date)
+ 
  TRecord.insertMany(data).then(function () {
   res.status(200).json({message:"SUCCESS",data:data})// Success 
 }).catch(function (error) {
   res.status(500).json(err)     // Failure 
 }); 
-    //const stud = new TRecord(data);
-    // stud.save().then(
-    //         (data) => {
-    //             res.status(200).json({message:"SUCCESS",data:data})} , 
-    //         (err) => {res.status(500).json(err)}
-    //     );
-
+   
    
 })
 
