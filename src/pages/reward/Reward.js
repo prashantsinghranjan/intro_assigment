@@ -4,7 +4,7 @@ import Table  from '../../components/table/Table'
 //import {TransactionServices} from '../../services/api/transaction.service'
 import { useEffect,useState } from 'react'
 import axios from '../../services/axios'
-import { object } from 'prop-types'
+//import { object } from 'prop-types'
 function Reward() {
   let rewardData=["Name","Reward/month","Total"]
   const [data,setData]=useState({})
