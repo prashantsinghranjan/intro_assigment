@@ -4,6 +4,8 @@ const TRecord=require("./model/tansactionRecord.model")
 const bodyParser=require('body-parser')
 const mongoose = require("mongoose");
 const moment=require('moment')
+const dotenv = require('dotenv');
+dotenv.config();
 
 const app=express()
 
@@ -177,5 +179,7 @@ app.post("/save",(req,res)=>{
    
 })
 
-
-app.listen(5000,()=>{console.log("successfully connected")})
+app.get("/home",(req,res)=>{
+    res.send("success time success")
+})
+app.listen(process.env.PORT,()=>{console.log("successfully connected")})

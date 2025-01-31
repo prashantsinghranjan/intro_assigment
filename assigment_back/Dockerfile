@@ -1,5 +1,4 @@
-FROM alpine:3.18
-Env NODE_VERSION 20.11.1
+FROM node:20.11.1
 
 WORKDIR /app
 
@@ -11,4 +10,4 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["node","index.js" ]
+CMD ["npm","run","dev" ]
